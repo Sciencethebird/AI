@@ -1,2 +1,23 @@
-
+# Operating System
+.DS_Store
+*.xml
+*.iml
+*.pyc
 *.csh
+*.fish
+*.7
+*.json
+*.cfg
+.DS_Store
+*.6
+
+#PyCharm
+python3
+python
+pip3
+pip
+activate
+easy_install
+
+#Other files
+Object_Practice/sample.txt
