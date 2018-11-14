@@ -19,8 +19,6 @@ income_test = median_income[16513:]
 price_test = median_house_price[16513:]
 
 
-#Basic Practice of one feature
-#b+w1a+w2b+w3c+w4a^2+w5b^2+w6c^2
 b = 0.01
 w1 = 0.01 #total room
 w2 = 0.01 #population
