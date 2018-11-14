@@ -6,11 +6,6 @@ import csv
 
 total_room, population, median_income, median_house_price = np.loadtxt('data.csv', delimiter = ',', unpack = True)
 
-tr_train = total_room[0:16513]
-pop_train = population[0:16513]
-inc_train = median_income[0:16513]
-hp_train = median_house_price[0:16513]
-
 tr_test = total_room[16513:]
 pop_test = population[16513:]
 inc_test = median_income[16513:]

@@ -9,10 +9,10 @@ import csv
 total_room, population, median_income, median_house_price = np.loadtxt('data.csv', delimiter = ',', unpack = True)
 
 
-room_train = total_room[0:16513]
-popu_train = population[0:16513]
-income_train = median_income[0:16513]
-price_train = median_house_price[0:16513]
+x1 = total_room[0:16513]
+x2 = population[0:16513]
+x3 = median_income[0:16513]
+y = median_house_price[0:16513]
 
 room_test = total_room[16513:]
 popu_test = population[16513:]
@@ -45,7 +45,7 @@ lr7 = 0.0000000000000000000000000001
 lr8 = 0.0000000000000000000000000001
 lr9 = 0.000000000001
 
-iteration = 10000
+iteration = 1000
 
 b_history =[]
 w1_history =[]
@@ -77,28 +77,28 @@ for i in range(iteration):
         print(int(i/iteration*100),'% done')
 
 
-    for n in range (len(median_house_price)):
+    for n in range (len(y)):
 
-        temp = 2.0*median_house_price[n] - (b+w1*total_room[n]
-                                             +w2*population[n]
-                                             +w3*median_income[n]
-                                             +w4*(total_room[n]**2)
-                                             +w5*(population[n]**2)
-                                             +w6*(median_income[n]**2)
-                                             +w7*(total_room[n]**3)
-                                             +w8*(population[n]**3)
-                                             +w9*(median_income[n]**3))
+        temp = 2.0*y[n] - (b+w1*x1[n]
+                         +w2*x2[n]
+                         +w3*x3[n]
+                         +w4*(x1[n]**2)
+                         +w5*(x2[n]**2)
+                         +w6*(x3[n]**2)
+                         +w7*(x1[n]**3)
+                         +w8*(x2[n]**3)
+                         +w9*(x3[n]**3))
 
         b_grad = b_grad - temp*1.0
-        w1_grad = w1_grad - temp*total_room[n]                             
-        w2_grad = w2_grad - temp*population[n]
-        w3_grad = w3_grad - temp*median_income[n]                                               
-        w4_grad = w4_grad - temp*(total_room[n]**2)                          
-        w5_grad = w5_grad - temp*(population[n]**2)
-        w6_grad = w6_grad - temp*(median_income[n]**2)
-        w7_grad = w7_grad - temp*(total_room[n]**3)
-        w8_grad = w8_grad - temp*(population[n]**3)
-        w9_grad = w9_grad - temp*(median_income[n]**3)
+        w1_grad = w1_grad - temp*x1[n]                             
+        w2_grad = w2_grad - temp*x2[n]
+        w3_grad = w3_grad - temp*x3[n]                                               
+        w4_grad = w4_grad - temp*(x1[n]**2)                          
+        w5_grad = w5_grad - temp*(x2[n]**2)
+        w6_grad = w6_grad - temp*(x3[n]**2)
+        w7_grad = w7_grad - temp*(x1[n]**3)
+        w8_grad = w8_grad - temp*(x2[n]**3)
+        w9_grad = w9_grad - temp*(x3[n]**3)
         
     b = b - lrb * b_grad
     w1 = w1 - lr1 * w1_grad

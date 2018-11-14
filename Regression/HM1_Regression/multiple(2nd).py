@@ -8,10 +8,10 @@ import csv
 total_room, population, median_income, median_house_price = np.loadtxt('data.csv', delimiter = ',', unpack = True)
 
 
-room_train = total_room[0:16513]
-popu_train = population[0:16513]
-income_train = median_income[0:16513]
-price_train = median_house_price[0:16513]
+x1 = total_room[0:16513]
+x2 = population[0:16513]
+x3 = median_income[0:16513]
+y = median_house_price[0:16513]
 
 room_test = total_room[16513:]
 popu_test = population[16513:]
@@ -37,7 +37,7 @@ lr4 = 0.00000000000000000001
 lr5 = 0.00000000000000000001
 lr6 = 0.00000001
 
-iteration = 250
+iteration = 1500
 
 b_history =[]
 w1_history =[]
@@ -59,29 +59,28 @@ for i in range(iteration):
     w6_grad = 0.0
 
 
-    def guess(n):
-        return (b+w1*total_room[n]
-                +w2*population[n]
-                +w3*median_income[n]
-                +w4*(total_room[n]**2)
-                +w5*(population[n]**2)
-                +w6*(median_income[n]**2))
+
 
     if i%10 is 0:
         print(int(i/iteration*100),'% done')
 
 
-    for n in range (len(median_house_price)):
+    for n in range (len(y)):
       
-        temp = 2.0 * (median_house_price[n] - guess(n))
+        temp = 2.0 * (y[n] - b -w1*x1[n]
+                               -w2*x2[n]
+                               -w3*x3[n]
+                               -w4*(x1[n]**2)
+                               -w5*(x2[n]**2)
+                               -w6*(x3[n]**2))
 
         b_grad = b_grad - temp * 1.0      
-        w1_grad = w1_grad - temp * total_room[n]                                      
-        w2_grad = w2_grad - temp * population[n]
-        w3_grad = w3_grad - temp * median_income[n]                                                            
-        w4_grad = w4_grad - temp * (total_room[n]**2)                     
-        w5_grad = w5_grad - temp * (population[n]**2)
-        w6_grad = w6_grad - temp *(median_income[n]**2)
+        w1_grad = w1_grad - temp * x1[n]                                      
+        w2_grad = w2_grad - temp * x2[n]
+        w3_grad = w3_grad - temp * x3[n]                                                            
+        w4_grad = w4_grad - temp * (x1[n]**2)                     
+        w5_grad = w5_grad - temp * (x2[n]**2)
+        w6_grad = w6_grad - temp * (x3[n]**2)
         
     b = b - lrb * b_grad
     w1 = w1 - lr1 * w1_grad

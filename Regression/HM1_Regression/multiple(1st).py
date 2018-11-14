@@ -7,10 +7,10 @@ import csv
 total_room, population, median_income, median_house_price = np.loadtxt('data.csv', delimiter = ',', unpack = True)
 
 
-room_train = total_room[0:16513]
-popu_train = population[0:16513]
-income_train = median_income[0:16513]
-price_train = median_house_price[0:16513]
+x1 = total_room[0:16513]
+x2 = population[0:16513]
+x3 = median_income[0:16513]
+y = median_house_price[0:16513]
 
 room_test = total_room[16513:]
 popu_test = population[16513:]
@@ -48,17 +48,16 @@ for i in range(iteration):
     if i%100 is 0:
         print(int(i/iteration*100),'% done')
 
-    for n in range (len(median_house_price)):
-        temp = 2.0*(median_house_price[n]
-                               -b
-                               -w1*total_room[n]
-                               -w2*population[n]
-                               -w3*median_income[n])
+    for n in range (len(y)):
+        temp = 2.0*(y[n]-b
+                     -w1*x1[n]
+                     -w2*x2[n]
+                     -w3*x3[n])
 
         b_grad = b_grad - temp * 1.0
-        w1_grad = w1_grad - temp * total_room[n]
-        w2_grad = w2_grad - temp * population[n]
-        w3_grad = w3_grad - temp * median_income[n]
+        w1_grad = w1_grad - temp * x1[n]
+        w2_grad = w2_grad - temp * x2[n]
+        w3_grad = w3_grad - temp * x3[n]
         
     b = b - lrb * b_grad
     w1 = w1 - lr1 * w1_grad
@@ -84,33 +83,18 @@ with open('1D_Weights_history.txt', 'w') as file:
     file.write(str(w3_history)[1:-1]+'\n')
 #hp.avg_error(w, b, inc_test, hp_test)
 
-plt.plot(np.arange(len(b_history)), b_history, label = 'b')
-#plt.plot(np.arange(len(b_history)), w2_history, label = 'w2')
-plt.legend()
-plt.xlabel('iteration')
-plt.ylabel('b')
-plt.show()
+def plot_weight(weight, name):
+    plt.plot(np.arange(len(b_history)), weight, label = name)
+    plt.legend()
+    plt.xlabel('iteration')
+    plt.ylabel(name)
+    plt.show()
 
-plt.plot(np.arange(len(b_history)), w1_history, label = 'w1')
-#plt.plot(np.arange(len(b_history)), w2_history, label = 'w2')
-plt.legend()
-plt.xlabel('iteration')
-plt.ylabel('w1')
-plt.show()
+plot_weight(b_history, 'b')
+plot_weight(w1_history, 'w1')
+plot_weight(w2_history, 'w2')
+plot_weight(w3_history, 'w3')
 
-plt.plot(np.arange(len(b_history)), w2_history, label = 'w2')
-#plt.plot(np.arange(len(b_history)), w2_history, label = 'w2')
-plt.legend()
-plt.xlabel('iteration')
-plt.ylabel('w2')
-plt.show()
-
-plt.plot(np.arange(len(b_history)), w3_history, label = 'w3')
-#plt.plot(np.arange(len(b_history)), w2_history, label = 'w2')
-plt.legend()
-plt.xlabel('iteration')
-plt.ylabel('w3')
-plt.show()
 '''
 plt.scatter(np.arange(len(hp_test)),hp_test, label = 'test_data', color = 'b')
 prdic = []
