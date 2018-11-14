@@ -21,3 +21,6 @@ easy_install
 
 #Other files
 Object_Practice/sample.txt
+*.pyproj
+*.sln
+Regression/.vs/HM1_Regression/v15/.suo
