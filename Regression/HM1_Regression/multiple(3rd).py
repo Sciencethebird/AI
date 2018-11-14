@@ -80,14 +80,14 @@ for i in range(iteration):
     for n in range (len(y)):
 
         temp = 2.0*y[n] - (b+w1*x1[n]
-                         +w2*x2[n]
-                         +w3*x3[n]
-                         +w4*(x1[n]**2)
-                         +w5*(x2[n]**2)
-                         +w6*(x3[n]**2)
-                         +w7*(x1[n]**3)
-                         +w8*(x2[n]**3)
-                         +w9*(x3[n]**3))
+                            +w2*x2[n]
+                            +w3*x3[n]
+                            +w4*(x1[n]**2)
+                            +w5*(x2[n]**2)
+                            +w6*(x3[n]**2)
+                            +w7*(x1[n]**3)
+                            +w8*(x2[n]**3)
+                            +w9*(x3[n]**3))
 
         b_grad = b_grad - temp*1.0
         w1_grad = w1_grad - temp*x1[n]                             
@@ -126,8 +126,7 @@ for i in range(iteration):
 
 with open('3D_Weights.txt', 'w') as file:
     weights = [b, w1, w2, w3, w4, w5, w6, w7, w8, w9]
-    out = str(weights)[1:-1]
-    file.write(out)
+    file.write(str(weights)[1:-1])
 
 
 def plot_weight(weight, name):

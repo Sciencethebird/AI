@@ -50,9 +50,9 @@ for i in range(iteration):
 
     for n in range (len(y)):
         temp = 2.0*(y[n]-b
-                     -w1*x1[n]
-                     -w2*x2[n]
-                     -w3*x3[n])
+                        -w1*x1[n]
+                        -w2*x2[n]
+                        -w3*x3[n])
 
         b_grad = b_grad - temp * 1.0
         w1_grad = w1_grad - temp * x1[n]
@@ -73,15 +73,14 @@ for i in range(iteration):
 
 with open('1D_Weights.txt', 'w') as file:
     weights = [b, w1, w2, w3]
-    out = str(weights)[1:-1]
-    file.write(out)
+    file.write(str(weights)[1:-1])
 
 with open('1D_Weights_history.txt', 'w') as file:
     file.write(str(b_history)[1:-1]+'\n')
     file.write(str(w1_history)[1:-1]+'\n')
     file.write(str(w2_history)[1:-1]+'\n')
     file.write(str(w3_history)[1:-1]+'\n')
-#hp.avg_error(w, b, inc_test, hp_test)
+
 
 def plot_weight(weight, name):
     plt.plot(np.arange(len(b_history)), weight, label = name)

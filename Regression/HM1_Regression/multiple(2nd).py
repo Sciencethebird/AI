@@ -102,8 +102,7 @@ for i in range(iteration):
 
 with open('2D_Weights.txt', 'w') as file:
     weights = [b, w1, w2, w3, w4, w5, w6]
-    out = str(weights)[1:-1]
-    file.write(out)
+    file.write(str(weights)[1:-1])
 
 def plot_weight(weight, name):
     plt.plot(np.arange(len(b_history)), weight, label = name)

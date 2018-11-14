@@ -13,9 +13,10 @@ hp_test = median_house_price[16513:]
 
 def avg_error():
     p = np.loadtxt('1D_Weights.txt', delimiter=',')
+    print(p)
     error = 0
     d = 0
-    print(p[0], p[1],p[2], p[3])
+    
     for i in range(len(hp_test)):
         e = hp_test[i] - (p[1]*tr_test[i]
                          +p[2]*pop_test[i]
@@ -29,9 +30,11 @@ def avg_error():
 
 def avg_error_2d():
     p = np.loadtxt('2D_Weights.txt', delimiter=',')
+    print(p)
+
     error = 0
     d = 0
-    print(p)
+   
     for i in range(len(hp_test)):
         e = hp_test[i] - (p[1]*tr_test[i]
                          +p[2]*pop_test[i]
@@ -42,12 +45,14 @@ def avg_error_2d():
                          +p[0])
         d = d + e/hp_test[i]
         error = error + e**2
+
     error = math.sqrt(error/len(hp_test))
     d = d/len(hp_test)
+
     print('RMSD = ', error, ' dollar, error = ', 100*d, '%\n')
 
 def avg_error_3d():
-    error = 0
+
     p = np.loadtxt('3D_Weights.txt', delimiter=',')
     print(p)
     error = 0
@@ -68,7 +73,8 @@ def avg_error_3d():
     d = d/len(hp_test)
     print('RMSD = ', error, ' dollar, error = ', 100*d, '%\n')
 
-print('RMSD: ', np.average(hp_test),'\n')
+print('avg price: ', np.average(hp_test),'\n')
+
 avg_error_3d()
 avg_error_2d()
 avg_error()
