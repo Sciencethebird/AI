@@ -9,6 +9,7 @@
 *.json
 *.cfg
 .DS_Store
+.suo
 *.6
 
 #PyCharm
@@ -23,4 +24,5 @@ easy_install
 Object_Practice/sample.txt
 *.pyproj
 *.sln
+
 Regression/.vs/HM1_Regression/v15/.suo
