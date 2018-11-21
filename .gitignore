@@ -26,3 +26,4 @@ Object_Practice/sample.txt
 *.sln
 
 Regression/.vs/HM1_Regression/v15/.suo
+HM1_Regression/venv/bin/f2py
