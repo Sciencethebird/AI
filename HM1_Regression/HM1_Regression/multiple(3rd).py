@@ -129,21 +129,38 @@ with open('3D_Weights.txt', 'w') as file:
     file.write(str(weights)[1:-1])
 
 
-def plot_weight(weight, name):
-    plt.plot(np.arange(len(b_history)), weight, label = name)
-    plt.legend()
-    plt.xlabel('iteration')
-    plt.ylabel(name)
-    plt.show()
+def plot_weight(weight, name, ax):
+    ax.plot(np.arange(len(b_history)), weight, label = name)
+    #ax.legend()
+    ax.set_xlabel('iteration')
+    ax.set_ylabel(name)
+    #plt.show()
 
-plot_weight(b_history, 'b')
-plot_weight(w1_history, 'w1')
-plot_weight(w2_history, 'w2')
-plot_weight(w3_history, 'w3')
-plot_weight(w4_history, 'w4')
-plot_weight(w5_history, 'w5')
-plot_weight(w6_history, 'w6')
-plot_weight(w7_history, 'w7')
-plot_weight(w8_history, 'w8')
-plot_weight(w9_history, 'w9')
+fig = plt.figure()
+ax1 = fig.add_subplot(5,2,1)
+ax2 = fig.add_subplot(5,2,2)
+ax3 = fig.add_subplot(5,2,3)
+ax4 = fig.add_subplot(5,2,4)
+ax5 = fig.add_subplot(5,2,5)
+ax6 = fig.add_subplot(5,2,6)
+ax7 = fig.add_subplot(5,2,7)
+ax8 = fig.add_subplot(5,2,8)
+ax9 = fig.add_subplot(5,2,9)
+ax10 = fig.add_subplot(5,2,10)
+
+
+plot_weight(b_history, 'b', ax1)
+plot_weight(w1_history, 'w1', ax2)
+plot_weight(w2_history, 'w2', ax3)
+plot_weight(w3_history, 'w3', ax4)
+plot_weight(w4_history, 'w4', ax5)
+plot_weight(w5_history, 'w5', ax6)
+plot_weight(w6_history, 'w6', ax7)
+plot_weight(w7_history, 'w7', ax8)
+plot_weight(w7_history, 'w8', ax9)
+plot_weight(w9_history, 'w9', ax10)
+plt.show()
+
+
+
 

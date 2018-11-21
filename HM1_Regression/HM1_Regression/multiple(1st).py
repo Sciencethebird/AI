@@ -82,17 +82,25 @@ with open('1D_Weights_history.txt', 'w') as file:
     file.write(str(w3_history)[1:-1]+'\n')
 
 
-def plot_weight(weight, name):
-    plt.plot(np.arange(len(b_history)), weight, label = name)
-    plt.legend()
-    plt.xlabel('iteration')
-    plt.ylabel(name)
-    plt.show()
+def plot_weight(weight, name, ax):
+    ax.plot(np.arange(len(b_history)), weight, label = name)
+    #ax.legend()
+    ax.set_xlabel('iteration')
+    ax.set_ylabel(name)
+    #plt.show()
+    
 
-plot_weight(b_history, 'b')
-plot_weight(w1_history, 'w1')
-plot_weight(w2_history, 'w2')
-plot_weight(w3_history, 'w3')
+fig = plt.figure()
+ax1 = fig.add_subplot(2,2,1)
+ax2 = fig.add_subplot(2,2,2)
+ax3 = fig.add_subplot(2,2,3)
+ax4 = fig.add_subplot(2,2,4)
+
+plot_weight(b_history, 'b', ax1)
+plot_weight(w1_history, 'w1', ax2)
+plot_weight(w2_history, 'w2', ax3)
+plot_weight(w3_history, 'w3', ax4)
+plt.show()
 
 '''
 plt.scatter(np.arange(len(hp_test)),hp_test, label = 'test_data', color = 'b')

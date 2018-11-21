@@ -19,6 +19,8 @@ income_test = median_income[16513:]
 price_test = median_house_price[16513:]
 
 
+#Basic Practice of one feature
+#b+w1a+w2b+w3c+w4a^2+w5b^2+w6c^2
 b = 0.01
 w1 = 0.01 #total room
 w2 = 0.01 #population
@@ -102,18 +104,30 @@ with open('2D_Weights.txt', 'w') as file:
     weights = [b, w1, w2, w3, w4, w5, w6]
     file.write(str(weights)[1:-1])
 
-def plot_weight(weight, name):
-    plt.plot(np.arange(len(b_history)), weight, label = name)
-    plt.legend()
-    plt.xlabel('iteration')
-    plt.ylabel(name)
-    plt.show()
+def plot_weight(weight, name, ax):
+    ax.plot(np.arange(len(b_history)), weight, label = name)
+    #ax.legend()
+    ax.set_xlabel('iteration')
+    ax.set_ylabel(name)
+    #plt.show()
 
-plot_weight(b_history, 'b')
-plot_weight(w1_history, 'w1')
-plot_weight(w2_history, 'w2')
-plot_weight(w3_history, 'w3')
-plot_weight(w4_history, 'w4')
-plot_weight(w5_history, 'w5')
-plot_weight(w6_history, 'w6')
+fig = plt.figure()
+ax1 = fig.add_subplot(4,2,1)
+ax2 = fig.add_subplot(4,2,3)
+ax3 = fig.add_subplot(4,2,4)
+ax4 = fig.add_subplot(4,2,5)
+ax5 = fig.add_subplot(4,2,6)
+ax6 = fig.add_subplot(4,2,7)
+ax7 = fig.add_subplot(4,2,8)
 
+
+plot_weight(b_history, 'b', ax1)
+plot_weight(w1_history, 'w1', ax2)
+plot_weight(w2_history, 'w2', ax3)
+plot_weight(w3_history, 'w3', ax4)
+plot_weight(w4_history, 'w4', ax5)
+plot_weight(w5_history, 'w5', ax6)
+plot_weight(w6_history, 'w6', ax7)
+
+
+plt.show()
