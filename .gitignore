@@ -9,7 +9,7 @@
 *.json
 *.cfg
 .DS_Store
-*.suo
+.suo
 *.6
 
 #PyCharm
