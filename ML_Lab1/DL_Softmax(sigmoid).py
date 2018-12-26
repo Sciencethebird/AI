@@ -79,9 +79,9 @@ def ReLu_Back(dEdy,x):
 
 eta =  0.00005      #learning rate       ###########lolololololol
 Data_num = 784      #size of input data   (inputlayer, 784 pixels)
-W1_num = 15         #size of first neural (1st hidden layer)
+W1_num = 40         #size of first neural (1st hidden layer)
 Out_num = 10        #size of output data  (output layer)
-iteration = 3000     #epoch for training   (iteration)
+iteration = 1000     #epoch for training   (iteration)
 image_num = 60000   #input images
 test_num  = 10000   #testing images
 
@@ -249,6 +249,9 @@ for itr in range(iteration):
             print('eta changed down to ', eta)
         if accuracy - valid_accuracy[-1]< 0.01 and accuracy - valid_accuracy[-1] > 0 and itr>300:
             eta = eta * 1.01
+            print('eta changed up to ', eta)
+        if  itr>500:
+            eta = 0.000008
             print('eta changed up to ', eta)
  
         valid_accuracy.append(accuracy)
