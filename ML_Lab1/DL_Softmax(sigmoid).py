@@ -55,23 +55,6 @@ def loss_For(y,y_pred):
     return loss
 
 
-def ReLu_For(x):
-    if x > 0:
-        y = x
-    else: 
-        y = 0
-    return y
-
-def ReLu_Back(dEdy,x):
-    if x > 0:
-        dEdx = 1
-    else: 
-        dEdx = 0
-    return dEdx
-
-
-
-
 # ## Setup the Parameters and Variables (Can tune that!!!)
 
 # In[4]:
