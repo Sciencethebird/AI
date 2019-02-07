@@ -24,6 +24,7 @@ easy_install
 Object_Practice/sample.txt
 *.pyproj
 *.sln
+*.gz
 
 Regression/.vs/HM1_Regression/v15/.suo
 HM1_Regression/venv/bin/f2py
