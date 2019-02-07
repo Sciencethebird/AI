@@ -41,3 +41,11 @@ ML_Lab1/fashion-mnist_test_data.csv
 ML_Lab1/fashion-mnist_train_data.csv
 ML_Lab1/ML講義/Lecture 1 overview of computer vision on image classification 20180907.pptx
 ML_Lab1/ML講義/Lecture 2 neural network 20180908.pptx
+*.meta
+3.Resnet/data/cifar-10-batches-py/data_batch_1
+3.Resnet/data/cifar-10-batches-py/data_batch_2
+3.Resnet/data/cifar-10-batches-py/data_batch_3
+3.Resnet/data/cifar-10-batches-py/data_batch_4
+3.Resnet/data/cifar-10-batches-py/data_batch_5
+3.Resnet/data/cifar-10-batches-py/readme.html
+3.Resnet/data/cifar-10-batches-py/test_batch
